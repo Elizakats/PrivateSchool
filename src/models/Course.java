@@ -13,6 +13,7 @@ import java.time.LocalDate;
  */
 public class Course {
 
+    private int courseId;
     private String title;
     private String stream;
     private String type;
@@ -23,7 +24,8 @@ public class Course {
 
     }
 
-    public Course(String title, String stream, String type, LocalDate start_date, LocalDate end_date) {
+    public Course(int courseId, String title, String stream, String type, LocalDate start_date, LocalDate end_date) {
+        this.courseId= courseId;
         this.title = title;
         this.stream = stream;
         this.type = type;
@@ -31,8 +33,15 @@ public class Course {
         this.end_date = end_date;
     }
 
-  
+    public int getCourseId() {
+        return courseId;
+    }
 
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+  
     public void setTitle(String title) {
         this.title = title;
     }
@@ -77,7 +86,9 @@ public class Course {
 
     @Override
     public String toString() {
-        return  "Course title=" + title + ", Stream=" + stream + ", Type=" + type + ", Start Date=" + start_date + ", End Date=" + end_date;
+        return  "Course Id=" + courseId + ", Title=" + title + ", "
+                + "Stream=" + stream + ", Type=" + type + ", "
+                + "Start Date=" + start_date + ", End Date=" + end_date;
     }
     
 }

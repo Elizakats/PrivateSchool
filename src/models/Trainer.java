@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public class Trainer {
 
+    private int trainerId;
     private String firstName;
     private String lastName;
     private String subject;
@@ -20,11 +21,20 @@ public class Trainer {
     public Trainer() {
     }
 
-    public Trainer(String firstName, String lastName, String subject) {
+    public Trainer(int trainerId, String firstName, String lastName, String subject) {
+        this.trainerId = trainerId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.subject = subject;
 
+    }
+
+    public int getTrainerId() {
+        return trainerId;
+    }
+
+    public void setTrainerId(int trainerId) {
+        this.trainerId = trainerId;
     }
 
     public void setFirstName(String firstName) {
@@ -53,7 +63,7 @@ public class Trainer {
 
     @Override
     public String toString() {
-        return  "First Name=" + firstName + ", Last Name=" + lastName + ", His/Her subject is=" + subject;
+        return "First Name=" + firstName + ", Last Name=" + lastName + ", His/Her subject is=" + subject;
     }
 
     @Override
@@ -88,6 +98,5 @@ public class Trainer {
         }
         return true;
     }
-    
-    
+
 }

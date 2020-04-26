@@ -5,13 +5,14 @@
  */
 package printMethods;
 
+import database.SelectFromDatabase;
 import validation.CheckIntegerNumbers;
-import models.SchoolCourse;
 import models.Assignment;
 import models.Student;
 import models.Trainer;
 import java.util.ArrayList;
 import java.util.Scanner;
+import models.Course;
 import validation.DateMethods;
 
 /**
@@ -23,11 +24,15 @@ public class PrintChoice {
     static Scanner sc = new Scanner(System.in);
     static String answer;
 
-    public static void askUserWhatToPrint(
-            ArrayList<Student> studentList,
-            ArrayList<Trainer> trainerList,
-            ArrayList<Assignment> assignmentList,
-            ArrayList<SchoolCourse> schoolCourseList) {
+    private PrintLists printer;
+    private SelectFromDatabase selector;
+
+    public PrintChoice() {
+        printer = new PrintLists();
+        selector = new SelectFromDatabase();
+    }
+
+    public void askUserWhatToPrint() {
 
         do {
             System.out.println("What would you like to print? Press :");
@@ -41,61 +46,45 @@ public class PrintChoice {
             System.out.println("8. To print all the assignments per student");
             System.out.println("9. To print all the students that that belong "
                     + "to more than one courses");
-            System.out.println("10. To print all students that need to submit "
-                    + "assignment/s within a week.");
-            System.out.println("11. Nothing");
-                  
-            int printChoice = CheckIntegerNumbers.insertAndCheckIntNumberInARange(1,11);
+
+            int printChoice = CheckIntegerNumbers.insertAndCheckIntNumberInARange(1, 9);
 
             switch (printChoice) {
                 case 1:
-                    PrintLists.printAllStudents(studentList);
+                    ArrayList<Student> studentList = selector.getStudentList();
+                    printer.printAllStudents(studentList);
                     break;
                 case 2:
-                    PrintLists.printAllTrainers(trainerList);
+                    ArrayList<Trainer> trainerList = selector.getTrainerList();
+                    printer.printAllTrainers(trainerList);
                     break;
                 case 3:
-                    PrintLists.printAllAssigniments(assignmentList);
+                    ArrayList<Assignment> assignmentList = selector.getAssignmentList();
+                    printer.printAllAssigniments(assignmentList);
                     break;
                 case 4:
-                    PrintLists.printAllCourses(schoolCourseList);
+                    ArrayList<Course> courseList = selector.getCourseList();
+                    printer.printAllCourses(courseList);
                     break;
                 case 5:
-                    PrintLists.printStudentsPerCourse(schoolCourseList);
+                    printer.selectAndPrintAllStudentsPerCourse();
                     break;
                 case 6:
-                    PrintLists.printTrainersPerCourse(schoolCourseList);
+                    printer.selectAndPrintAllTrainersPerCourse();
                     break;
                 case 7:
-                    PrintLists.printAssignmentsPerCourse(schoolCourseList);
+                    printer.selectAndPrintAllAssignmentsPerCourse();
                     break;
                 case 8:
-                    PrintLists.printAssignmentsPerStudent(studentList);
+                    printer.selectAndPrintAllAssignmentsPerStudent();
                     break;
                 case 9:
-                    ArrayList<Student> studentListInManyCourses
-                            = PrintLists.findStudentsInManyCourses(studentList, schoolCourseList);
-                    PrintLists.printStudentsThatBelongsInManyCourses(studentListInManyCourses);
+                    printer.selectAndPrintStudentsThatBelongsInManyCourses();
                     break;
-                case 10:
-                    askUserADateAndPrintStudentsWithAssignments(studentList);
-                    break;
-                case 11:
-                    System.out.println("Ok, no prints for you.");
             }
             System.out.println("Would you like to print something else? Yes or No?");
             answer = sc.next();
         } while (answer.equalsIgnoreCase("yes"));
         System.out.println("Goodbye!!!");
-    }
-
-    public static void askUserADateAndPrintStudentsWithAssignments(
-            ArrayList<Student> studentList) {
-
-        System.out.println("Give me a date to show you the students who need"
-                + " to submit assignment/s in the same week (dd/MM/yyyy): ");
-        ArrayList<Student> studentListWithAssignmentsInADateRange
-                = DateMethods.createStudentListWithAssignmentsInADateRange(studentList);
-        PrintLists.printStudentListWithAssignmnetsInADateRange(studentListWithAssignmentsInADateRange);
     }
 }

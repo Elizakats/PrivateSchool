@@ -16,10 +16,7 @@ import static dataLoader.AddInputsFromUser.addAssignmentsForEachCourseFromUserIn
 import static dataLoader.AddInputsFromUser.addCoursesFromUserInput;
 import static dataLoader.AddInputsFromUser.addStudentsFromUserInput;
 import static dataLoader.AddInputsFromUser.addTrainersFromUserInput;
-import static dataLoader.SyntheticData.addSyntheticsCourses;
-import static dataLoader.SyntheticData.addSyntheticsAssignments;
-import static dataLoader.SyntheticData.addSyntheticsStudents;
-import static dataLoader.SyntheticData.addSyntheticsTrainers;
+
 
 /**
  *
@@ -27,7 +24,6 @@ import static dataLoader.SyntheticData.addSyntheticsTrainers;
  */
 public class PrivateSchool {
 
-    
     public static void privateSchool() {
         // Values initialization
         Scanner sc = new Scanner(System.in);
@@ -38,33 +34,34 @@ public class PrivateSchool {
         ArrayList<Assignment> assignmentList = new ArrayList();
         ArrayList<SchoolCourse> schoolCourseList = new ArrayList();
 
-        System.out.print(
-                "Hello! Would you like to add data or you would like to use synthetics?\nPress 1 to add or  something else to use synthetics:");
-        answer = sc.next();
+        System.out.println("Hello! Welcome to Private School Project!");
 
-        if (answer.equals("1")) {
+        do {
+            System.out.println("If you want to print data press 1.\n"
+                    + "If you want to add data press 2.");
 
-            // Fill data from User data
-            addCoursesFromUserInput(schoolCourseList);
+            answer = sc.next();
 
-            addAssignmentsForEachCourseFromUserInput(assignmentList, schoolCourseList);
+            if (answer.equals("1")) {
+                PrintChoice printChoise= new PrintChoice();
+                printChoise.askUserWhatToPrint();
+                
 
-            addStudentsFromUserInput(studentList, schoolCourseList);
+            } else if (answer.equals("2")) {
 
-            addTrainersFromUserInput(trainerList, schoolCourseList);
-        } else {
+                // Fill data from User data
+                addCoursesFromUserInput(schoolCourseList);
 
-            // Fill data with Synthetics
-            addSyntheticsCourses(schoolCourseList);
+                addAssignmentsForEachCourseFromUserInput(assignmentList, schoolCourseList);
 
-            addSyntheticsAssignments(schoolCourseList, assignmentList);
+                addStudentsFromUserInput(studentList, schoolCourseList);
 
-            addSyntheticsStudents(studentList, schoolCourseList);
+                addTrainersFromUserInput(trainerList, schoolCourseList);
+            } else {
+                System.out.println("Wrong input! try again: ");
+            }
+        } while ((!answer.equals("1")) && (!answer.equals("2")));
 
-            addSyntheticsTrainers(trainerList, schoolCourseList);
-
-        }
-        //Print selection
-        PrintChoice.askUserWhatToPrint(studentList, trainerList, assignmentList, schoolCourseList);
     }
+
 }

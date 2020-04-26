@@ -12,22 +12,34 @@ import java.time.LocalDate;
  * @author ELIZA
  */
 public class Assignment {
-
+    
+    private int assignmentId;
     private String title;
     private String description;
     private LocalDate subDateTime;
     private float oralMark;
     private float totalMark;
+    private int courseId;
 
     public Assignment() {
     }
 
-    public Assignment(String title, String description, LocalDate subDateTime, float oralMark, float totalMark) {
+    public Assignment(int assignmentId,String title, String description, LocalDate subDateTime, float oralMark, float totalMark, int courseId) {
+        this.assignmentId= assignmentId;
         this.title = title;
         this.description = description;
         this.subDateTime = subDateTime;
         this.oralMark = oralMark;
         this.totalMark = totalMark;
+        this.courseId= courseId;
+    }
+
+    public int getAssignmentId() {
+        return assignmentId;
+    }
+
+    public void setAssignmentId(int assignmentId) {
+        this.assignmentId = assignmentId;
     }
 
    
@@ -73,12 +85,26 @@ public class Assignment {
         this.totalMark = totalMark;
     }
 
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
     @Override
     public String toString() {
-        return "Title=" + title + ", Description=" + description + ", Submission Date=" + subDateTime;
+        return  "Assignment Id=" + assignmentId + ", "
+                + "Title=" + title + ", Description=" + description + ","
+                + " Submision DateTime=" + subDateTime + ", "
+                + "Max Oral Mark=" + oralMark + ", "
+                + "Max Total Mark=" + totalMark + '}';
     }
+    
+    
     //deep copy
     public Assignment(Assignment assignment) {
-        this(assignment.title, assignment.description, assignment.subDateTime, assignment.oralMark, assignment.totalMark);
+     //   this(assignment.title, assignment.description, assignment.subDateTime, assignment.oralMark, assignment.totalMark);
     }
 }
