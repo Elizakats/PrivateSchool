@@ -5,6 +5,7 @@
  */
 package printMethods;
 
+import database.SelectAndPrint;
 import database.SelectFromDatabase;
 import validation.CheckIntegerNumbers;
 import models.Assignment;
@@ -13,7 +14,7 @@ import models.Trainer;
 import java.util.ArrayList;
 import java.util.Scanner;
 import models.Course;
-import validation.DateMethods;
+
 
 /**
  *
@@ -26,6 +27,7 @@ public class PrintChoice {
 
     private PrintLists printer;
     private SelectFromDatabase selector;
+    private SelectAndPrint selectPrint;
 
     public PrintChoice() {
         printer = new PrintLists();
@@ -67,19 +69,19 @@ public class PrintChoice {
                     printer.printAllCourses(courseList);
                     break;
                 case 5:
-                    printer.selectAndPrintAllStudentsPerCourse();
+                    selectPrint.selectAndPrintAllStudentsPerCourse();
                     break;
                 case 6:
-                    printer.selectAndPrintAllTrainersPerCourse();
+                    selectPrint.selectAndPrintAllTrainersPerCourse();
                     break;
                 case 7:
-                    printer.selectAndPrintAllAssignmentsPerCourse();
+                    selectPrint.selectAndPrintAllAssignmentsPerCourse();
                     break;
                 case 8:
-                    printer.selectAndPrintAllAssignmentsPerStudent();
+                    selectPrint.selectAndPrintAllAssignmentsPerStudent();
                     break;
                 case 9:
-                    printer.selectAndPrintStudentsThatBelongsInManyCourses();
+                    selectPrint.selectAndPrintStudentsThatBelongsInManyCourses();
                     break;
             }
             System.out.println("Would you like to print something else? Yes or No?");

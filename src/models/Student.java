@@ -14,7 +14,7 @@ import java.util.Objects;
  * @author ELIZA
  */
 public class Student {
-    
+
     private int studentId;
     private String firstName;
     private String lastName;
@@ -27,17 +27,17 @@ public class Student {
     }
 
     public Student(int studentId, String firstName, String lastName, LocalDate dateOfBirth, float tuitionFees) {
-        this.studentId= studentId;
+        this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.tuitionFees = tuitionFees;
         assignmentsPerStudent = new ArrayList<>();
     }
-   
+
     // gia dokimi. Na to sviso
     public Student(int studentId, String firstName, String lastName) {
-        this.studentId= studentId;
+        this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -89,11 +89,11 @@ public class Student {
     public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
-    
-        @Override
+
+    @Override
     public String toString() {
-        return "Student Id=" + studentId+
-                ", First Name=" + firstName
+        return "Student Id=" + studentId
+                + ", First Name=" + firstName
                 + ", Last Name=" + lastName
                 + ", Date Of Birth=" + dateOfBirth
                 + ", Tuition Fees=" + tuitionFees;

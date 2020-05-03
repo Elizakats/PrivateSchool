@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author ELIZA
  */
 public class Assignment {
-    
+
     private int assignmentId;
     private String title;
     private String description;
@@ -24,14 +24,20 @@ public class Assignment {
     public Assignment() {
     }
 
-    public Assignment(int assignmentId,String title, String description, LocalDate subDateTime, float oralMark, float totalMark, int courseId) {
-        this.assignmentId= assignmentId;
+    public Assignment(int assignmentId, String title, String description) {
+        this.assignmentId = assignmentId;
+        this.title = title;
+        this.description = description;
+    }
+
+    public Assignment(int assignmentId, String title, String description, LocalDate subDateTime, float oralMark, float totalMark, int courseId) {
+        this.assignmentId = assignmentId;
         this.title = title;
         this.description = description;
         this.subDateTime = subDateTime;
         this.oralMark = oralMark;
         this.totalMark = totalMark;
-        this.courseId= courseId;
+        this.courseId = courseId;
     }
 
     public int getAssignmentId() {
@@ -41,8 +47,6 @@ public class Assignment {
     public void setAssignmentId(int assignmentId) {
         this.assignmentId = assignmentId;
     }
-
-   
 
     public String getTitle() {
         return title;
@@ -68,7 +72,6 @@ public class Assignment {
         this.subDateTime = subDateTime;
     }
 
-    
     public float getOralMark() {
         return oralMark;
     }
@@ -95,16 +98,15 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return  "Assignment Id=" + assignmentId + ", "
+        return "Assignment Id=" + assignmentId + ", "
                 + "Title=" + title + ", Description=" + description + ","
                 + " Submision DateTime=" + subDateTime + ", "
                 + "Max Oral Mark=" + oralMark + ", "
                 + "Max Total Mark=" + totalMark + '}';
     }
-    
-    
+
     //deep copy
     public Assignment(Assignment assignment) {
-     //   this(assignment.title, assignment.description, assignment.subDateTime, assignment.oralMark, assignment.totalMark);
+        //   this(assignment.title, assignment.description, assignment.subDateTime, assignment.oralMark, assignment.totalMark);
     }
 }

@@ -37,7 +37,7 @@ public class CheckFloatNumbers {
         return fee;
     }
 
-    public static float checkFloatNumberForOralMark() {
+    public static float checkFloatNumberForOralMark(Float maxMark) {
 
         float oralMark = 0;
         do {
@@ -50,15 +50,15 @@ public class CheckFloatNumbers {
                 System.out.println("Wrong Input! I need a number!");
             }
             // We also check if the user gave us negative number or number>20
-            if (oralMark <= 0 || oralMark > 20) {
-                System.out.println("Give me a positive number up to 20: ");
+            if (oralMark <= 0 || oralMark > maxMark) {
+                System.out.println("Give me a positive number up to "+ maxMark+ ":" );
             }
             // As long as the user gives us wrong inputs, the loop continues
-        } while (oralMark <= 0 || oralMark > 20);
+        } while (oralMark <= 0 || oralMark > maxMark);
         return oralMark;
     }
 
-    public static float checkFloatNumberForTotalMark(Float oralMark) {
+    public static float checkFloatNumberForStudentTotalMark(Float oralMark, Float maxOralMark) {
         float totalMark = 0;
         do {
              //We apply "try-catch", in order to catch the exception if the user
@@ -70,12 +70,14 @@ public class CheckFloatNumbers {
                 System.out.println("Wrong Input! I need a number!");
             }
             // We also check if the user gave us a number< oralMark or number>80+oralMark
-            if (totalMark <= oralMark || totalMark > (80+oralMark)) {
-                System.out.println("Give me a positive number up to "+ (80+oralMark)+": ");
+            if (totalMark <= maxOralMark || totalMark > (100- (maxOralMark -oralMark))) {
+                System.out.println("Give me a positive number up to "+ (100-(maxOralMark -oralMark))+": ");
             }
             // As long as the user gives us wrong inputs, the loop continues
-        } while (totalMark <= oralMark || totalMark > (80+oralMark));
+        } while (totalMark <= maxOralMark || totalMark > (100- (maxOralMark -oralMark)));
         return totalMark;
     }
 
+    
+  
 }

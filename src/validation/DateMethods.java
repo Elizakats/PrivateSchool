@@ -5,7 +5,7 @@
  */
 package validation;
 
-import java.text.SimpleDateFormat;
+
 import models.Student;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -38,73 +38,73 @@ public class DateMethods {
         return date;
     }
 
-    public static LocalDate stringToDate(String stringDate) {
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(stringDate, dateFormatter);
-        return date;
-    }
-
-    public static ArrayList<Student> createStudentListWithAssignmentsInADateRange(
-            ArrayList<Student> studentList) {
-        //We take the date from user input and we make it LocalDate
-        LocalDate usersDate = stringToDateFromScanner();
-        // Take the day of the week from the date that the user put in
-        DayOfWeek usersDateOfWeek = usersDate.getDayOfWeek();
-        // Set 2 random days for the switch to work
-        //I find the last Sunday of the week and Saturday of the same week
-        //in order to work with isAfter and isBefore
-        LocalDate dSunday = stringToDate("01/03/2020");
-        LocalDate dSaturday = stringToDate("07/03/2020");
-
-        switch (usersDateOfWeek) {
-            case MONDAY:
-                dSunday = usersDate.minusDays(1);
-                dSaturday = usersDate.plusDays(5);
-                break;
-            case TUESDAY:
-                dSunday = usersDate.minusDays(2);
-                dSaturday = usersDate.plusDays(4);
-                break;
-            case WEDNESDAY:
-                dSunday = usersDate.minusDays(3);
-                dSaturday = usersDate.plusDays(3);
-                break;
-            case THURSDAY:
-                dSunday = usersDate.minusDays(4);
-                dSaturday = usersDate.plusDays(2);
-                break;
-            case FRIDAY:
-                dSunday = usersDate.minusDays(5);
-                dSaturday = usersDate.plusDays(1);
-                break;
-            case SATURDAY:
-                dSunday = usersDate.minusDays(6);
-                dSaturday = usersDate;
-                break;
-            case SUNDAY:
-                dSunday = usersDate.minusDays(7);
-                dSaturday = usersDate.minusDays(1);
-                break;
-            default:
-                break;
-        }
-        ArrayList<Student> studentListWithAssignmentsInADateRange = new ArrayList<>();
-        for (int i = 0; i < studentList.size(); i++) {
-            int counter = 0;
-            for (int j = 0; j < studentList.get(i).getAssignmentsPerStudent().size(); j++) {
-                //Αuxiliary variable
-                LocalDate subDate = studentList.get(i).
-                        getAssignmentsPerStudent().get(j).getSubDateTime();
-                if (subDate.isAfter(dSunday) && subDate.isBefore(dSaturday)) {
-                    counter++;
-                }
-            }
-            if (counter > 0) {
-                studentListWithAssignmentsInADateRange.add(studentList.get(i));
-            }
-        }
-        return studentListWithAssignmentsInADateRange;
-    }
+//    public static LocalDate stringToDate(String stringDate) {
+//        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        LocalDate date = LocalDate.parse(stringDate, dateFormatter);
+//        return date;
+//    }
+//
+//    public static ArrayList<Student> createStudentListWithAssignmentsInADateRange(
+//            ArrayList<Student> studentList) {
+//        //We take the date from user input and we make it LocalDate
+//        LocalDate usersDate = stringToDateFromScanner();
+//        // Take the day of the week from the date that the user put in
+//        DayOfWeek usersDateOfWeek = usersDate.getDayOfWeek();
+//        // Set 2 random days for the switch to work
+//        //I find the last Sunday of the week and Saturday of the same week
+//        //in order to work with isAfter and isBefore
+//        LocalDate dSunday = stringToDate("01/03/2020");
+//        LocalDate dSaturday = stringToDate("07/03/2020");
+//
+//        switch (usersDateOfWeek) {
+//            case MONDAY:
+//                dSunday = usersDate.minusDays(1);
+//                dSaturday = usersDate.plusDays(5);
+//                break;
+//            case TUESDAY:
+//                dSunday = usersDate.minusDays(2);
+//                dSaturday = usersDate.plusDays(4);
+//                break;
+//            case WEDNESDAY:
+//                dSunday = usersDate.minusDays(3);
+//                dSaturday = usersDate.plusDays(3);
+//                break;
+//            case THURSDAY:
+//                dSunday = usersDate.minusDays(4);
+//                dSaturday = usersDate.plusDays(2);
+//                break;
+//            case FRIDAY:
+//                dSunday = usersDate.minusDays(5);
+//                dSaturday = usersDate.plusDays(1);
+//                break;
+//            case SATURDAY:
+//                dSunday = usersDate.minusDays(6);
+//                dSaturday = usersDate;
+//                break;
+//            case SUNDAY:
+//                dSunday = usersDate.minusDays(7);
+//                dSaturday = usersDate.minusDays(1);
+//                break;
+//            default:
+//                break;
+//        }
+//        ArrayList<Student> studentListWithAssignmentsInADateRange = new ArrayList<>();
+//        for (int i = 0; i < studentList.size(); i++) {
+//            int counter = 0;
+//            for (int j = 0; j < studentList.get(i).getAssignmentsPerStudent().size(); j++) {
+//                //Αuxiliary variable
+//                LocalDate subDate = studentList.get(i).
+//                        getAssignmentsPerStudent().get(j).getSubDateTime();
+//                if (subDate.isAfter(dSunday) && subDate.isBefore(dSaturday)) {
+//                    counter++;
+//                }
+//            }
+//            if (counter > 0) {
+//                studentListWithAssignmentsInADateRange.add(studentList.get(i));
+//            }
+//        }
+//        return studentListWithAssignmentsInADateRange;
+//    }
 
     public static LocalDate dateEndIsBeforeDateStart(LocalDate dateStart,
             LocalDate dateEnd) {

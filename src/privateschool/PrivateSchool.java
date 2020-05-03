@@ -6,17 +6,8 @@
 package privateschool;
 
 import printMethods.PrintChoice;
-import models.SchoolCourse;
-import models.Assignment;
-import models.Student;
-import models.Trainer;
-import java.util.ArrayList;
 import java.util.Scanner;
-import static dataLoader.AddInputsFromUser.addAssignmentsForEachCourseFromUserInput;
-import static dataLoader.AddInputsFromUser.addCoursesFromUserInput;
-import static dataLoader.AddInputsFromUser.addStudentsFromUserInput;
-import static dataLoader.AddInputsFromUser.addTrainersFromUserInput;
-
+import dataLoader.InsertChoice;
 
 /**
  *
@@ -29,11 +20,6 @@ public class PrivateSchool {
         Scanner sc = new Scanner(System.in);
         String answer;
 
-        ArrayList<Student> studentList = new ArrayList();
-        ArrayList<Trainer> trainerList = new ArrayList();
-        ArrayList<Assignment> assignmentList = new ArrayList();
-        ArrayList<SchoolCourse> schoolCourseList = new ArrayList();
-
         System.out.println("Hello! Welcome to Private School Project!");
 
         do {
@@ -43,20 +29,15 @@ public class PrivateSchool {
             answer = sc.next();
 
             if (answer.equals("1")) {
-                PrintChoice printChoise= new PrintChoice();
+                PrintChoice printChoise = new PrintChoice();
                 printChoise.askUserWhatToPrint();
-                
 
             } else if (answer.equals("2")) {
 
                 // Fill data from User data
-                addCoursesFromUserInput(schoolCourseList);
+                InsertChoice insertChoise = new InsertChoice();
+                insertChoise.askUserWhatToInsert();
 
-                addAssignmentsForEachCourseFromUserInput(assignmentList, schoolCourseList);
-
-                addStudentsFromUserInput(studentList, schoolCourseList);
-
-                addTrainersFromUserInput(trainerList, schoolCourseList);
             } else {
                 System.out.println("Wrong input! try again: ");
             }
