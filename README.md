@@ -1,7 +1,7 @@
-# This is a Project created during my education in Cooding Bootcamp
+# This is a Project created during my education in Cooding Bootcamp.
 # The Projects is connected with a Database. 
-# In this Project, the User can create Students,Trainers,Courses and Assignments for the Courses.
-# You can also enroll Trainers and Students in a Course.
+# In this Project, the User has some print options and he can create Students,Trainers,Courses and Assignments for the Courses.
+# He can also enroll Trainers and Students in a Course.
 # When a Student enrolls in a Course, there is a trigger in the database, which assigns all the course's assignments to the Student.
 
 •	You can find the Main, in the package privateschool, in class Application.
@@ -21,7 +21,7 @@ o	the DateMethods class, where I convert a String to a LocalDate and I check if 
 o	the CheckForDuplicates class, where I insure that no duplicate data will be insert to the database.
 
 
-Database
+Database: 
 •	The entities are: Students, Courses, Trainers, Assignments
 •	Courses can have many Students, Trainers, Assignments. Students and Trainers can belong to many courses. An Assignment belongs to one Course.
 •	We assume that when a Student enrolls in a Course, takes all the Assignment of the Course. Due to that a trigger has been made, which when a Student enrolls in a Course the table Student_Grades gets filled with the Student’s Assignments that need to be graded in the future.
